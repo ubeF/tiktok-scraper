@@ -9,7 +9,6 @@ import (
 )
 
 type SoundVideoList struct {
-	Cursor      string
 	HasMore     bool
 	StatusCode  int
 	Status_Code int
@@ -18,43 +17,17 @@ type SoundVideoList struct {
 }
 
 type SoundVideo struct {
-	Id            string
-	Desc          string
-	DuetEnabled   bool
-	StitchEnabled bool
-	CreateTime    int
-	Author        VideoAuthor
-	AuthorStats   VideoAuthorStats
-	Challenges    []Challenge
-	Stats         VideoStats
-	Video         VideoContent
+	Id          string
+	Desc        string
+	CreateTime  int
+	Author      Author
+	AuthorStats AuthorStats
+	Challenges  []Challenge
+	Stats       Stats
+	Video       Video
 }
 
-type VideoAuthor struct {
-	AvatarThumb string
-	Nickname    string
-	UniqueId    string
-	SecUId      string
-	Signature   string
-}
-
-type VideoContent struct {
-	Cover string
-}
-
-type Challenge struct {
-	Title string
-}
-
-type VideoStats struct {
-	CollectCount int
-	CommentCount int
-	DiggCount    int
-	PlayCount    int
-	ShareCount   int
-}
-
-type VideoAuthorStats struct {
+type AuthorStats struct {
 	DiggCount     int
 	FollowerCount int
 	FollowedCount int
@@ -113,14 +86,4 @@ func GetSoundVideoList(soundId string, cursor int) (SoundVideoList, error) {
 	}
 
 	return videoList, nil
-}
-
-func main() {
-	log.SetFlags(log.LstdFlags | log.Lshortfile)
-
-	_, error := GetSoundVideos("7413835514468059936", 60)
-
-	if error != nil {
-		log.Fatal(error)
-	}
 }
