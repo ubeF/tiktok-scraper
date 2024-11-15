@@ -1,4 +1,4 @@
-package scrape
+package tiktok
 
 import (
 	"encoding/json"

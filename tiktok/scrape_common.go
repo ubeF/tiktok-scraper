@@ -1,4 +1,4 @@
-package scrape
+package tiktok
 
 type Author struct {
 	AvatarThumb string
